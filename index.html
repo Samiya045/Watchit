@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="logo">
+            <h1>Watchit</h1>
+        </div>
+        <nav class="navigation">
+            <a href="#" onclick="showHome()">Home</a>
+            <a href="#">For Men</a>
+            <a href="#">For Women</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Cart</a>
+        </nav>
+        <div class="signin">
+            <button id="signin-btn" onclick="openModal('login')">Sign In</button>
+        </div>
+    </header>
+
+    <!-- Text Section -->
+    <div class="text-section" id="text-section">
+        <div class="text-container">
+            <p>Your Watch, Your Statement<br>Show the World Who You Are!</p>
+            <pre>believes that every timepiece<br>tells a unique story—crafted with<br>precision, infused with style, and<br>designed to express your individuality.</pre>
+            <button class="view-more" onclick="showProducts()">View More</button>
+        </div>
+    </div>
+    
+    <!-- Product Catalog Section -->
+    <div class="product-catalog" id="product-catalog" style="display: none;">
+        <h1>Men's Collection</h1>
+        <div class="product-boxes">
+            <div class="product-box">
+                <div class="product-wrapper">
+                    <img src="img1.jpeg" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Product 1</div>
+                        <div class="product-price">$99.99</div>
+                        <div class="product-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="product-wrapper">
+                    <img src="img2.jpeg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">name:Product 2</div>
+                        <div class="product-price">$89.99</div>
+                        <div class="product-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="product-wrapper">
+                    <img src="img3.jpeg" alt="Product 3" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Product 3</div>
+                        <div class="product-price">$79.99</div>
+                        <div class="product-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="product-wrapper">
+                    <img src="img4.jpeg" alt="Product 4" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Product 4</div>
+                        <div class="product-price">$69.99</div>
+                        <div class="product-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="product-wrapper">
+                    <img src="img5.jpeg" alt="Product 5" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Product 5</div>
+                        <div class="product-price">$59.99</div>
+                        <div class="product-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="product-wrapper">
+                    <img src="img6.jpeg" alt="Product 6" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Product 6</div>
+                        <div class="product-price">$49.99</div>
+                        <div class="product-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sections -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signup" onsubmit="return validateForm()">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username">
+                <small id="username-error">Username must be between 3 and 25 characters.</small>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="xyz@gmail.com">
+                <small id="email-error">Please enter a valid email.</small>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter password">
+                <small id="password-error">Password must have at least 8 characters, 1 uppercase letter, 1 number, and 1 special character.</small>
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Reenter your password">
+                <small id="confirm-password-error">Passwords do not match.</small>
+
+                <button type="submit">SIGN UP</button>
+            </form>
+            <p class="switch-form">
+                Have an account? <a href="#" onclick="openModal('login')">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="login" onsubmit="return validateLoginForm()">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="login-email" placeholder="Enter your email">
+                <small id="login-email-error">Please enter a valid email.</small>
+
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="login-password" placeholder="Enter password">
+                <small id="login-password-error">Password must be at least 8 characters long.</small>
+
+                <button type="submit">LOGIN</button>
+            </form>
+            <p class="switch-form">
+                Don't have an account? <a href="#" onclick="openModal('signup')">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
