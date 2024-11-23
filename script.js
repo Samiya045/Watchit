@@ -1,4 +1,4 @@
-// Show the appropriate modal
+       // Show the appropriate modal
 function openModal(formType) {
     closeModal(); // Close any open modals first
     if (formType === 'login') {
@@ -7,119 +7,82 @@ function openModal(formType) {
         document.getElementById('signup-modal').style.display = 'flex';
     }
 }
-
-// Close the modal
-function closeModal() {
+function closeModal() {// Close the modal
     document.getElementById('login-modal').style.display = 'none';
     document.getElementById('signup-modal').style.display = 'none';
 }
-
-// Validate the sign-up form
-function validateForm() {
+function validateForm() {// Validate the sign-up form
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirm-password").value;
     var email = document.getElementById("email").value;
-
     var isValid = true;
-
-    // Username validation
-    if (username.length < 3 || username.length > 25) {
+    if (username.length < 3 || username.length > 25) {    // Username validation
         document.getElementById("username-error").style.display = "block";
         isValid = false;
     } else {
-        document.getElementById("username-error").style.display = "none";
-    }
-
-    // Email validation
+        document.getElementById("username-error").style.display = "none";}
     var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!email.match(emailPattern)) {
+    if (!email.match(emailPattern)) {  // Email validation
         document.getElementById("email-error").style.display = "block";
         isValid = false;
     } else {
         document.getElementById("email-error").style.display = "none";
     }
-
-    // Password validation
     var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/;
-    if (!password.match(passwordRegex)) {
+    if (!password.match(passwordRegex)) {    // Password validation
         document.getElementById("password-error").style.display = "block";
         isValid = false;
     } else {
         document.getElementById("password-error").style.display = "none";
     }
-
-    // Confirm password validation
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword) {   // Confirm password validation
         document.getElementById("confirm-password-error").style.display = "block";
         isValid = false;
     } else {
         document.getElementById("confirm-password-error").style.display = "none";
     }
-
     if (isValid) {
         closeModal(); // Close the modal if valid
     }
-
-    return isValid;
-}
-
-// Validate the login form
-function validateLoginForm() {
+     return isValid;}
+function validateLoginForm() {// Validate the login form
     var email = document.getElementById("login-email").value;
     var password = document.getElementById("login-password").value;
-
-    var isValid = true;
-
-    // Email validation
+     var isValid = true;   
     var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!email.match(emailPattern)) {
+    if (!email.match(emailPattern)) {// Email validation
         document.getElementById("login-email-error").style.display = "block";
         isValid = false;
     } else {
         document.getElementById("login-email-error").style.display = "none";
     }
-
-    // Password validation
-    if (password.length < 8) {
+    if (password.length < 8) { // Password validation
         document.getElementById("login-password-error").style.display = "block";
         isValid = false;
     } else {
         document.getElementById("login-password-error").style.display = "none";
     }
-
     if (isValid) {
         closeModal(); // Close the modal if valid
     }
 
-    return isValid;
-}
+    return isValid;}
 function showProducts() {
     // Hide the text section and show the product catalog
     document.getElementById("text-section").style.display = "none";
     document.getElementById("product-catalog").style.display = "block";
 }
-
 function showHome() {
     // Show the text section and hide the product catalog
     document.getElementById("text-section").style.display = "block";
     document.getElementById("product-catalog").style.display = "none";
 }
-
 function showProducts() {
     // Hide the text section and show the product catalog
     document.getElementById("text-section").style.display = "none";
     document.getElementById("product-catalog").style.display = "block";
 }
 
-function updateQuantity(button, change) {
-    const quantitySpan = button.parentElement.querySelector('.quantity');
-    let quantity = parseInt(quantitySpan.innerText);
-    quantity += change;
 
-    // Ensure quantity doesn't go below 1
-    if (quantity < 1) {
-        quantity = 1;
-    }
-    quantitySpan.innerText = quantity;
-}
+
