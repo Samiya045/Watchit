@@ -1,4 +1,3 @@
-
 <%@ include file="modal.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,32 +14,35 @@
         <div class="logo">
             <h1>Watchit</h1>
         </div>
-        <nav class="navigation">
-             <a href="index.jsp" >Home</a>
-            <a href="men.jsp">For Men</a>
-            <a href="women.jsp">For Women</a>
-            <a href="contactus.jsp">Contact Us</a>
-            <a href="Cart.jsp">Cart</a>
-        </nav>
+       <nav class="navigation">
+    <a href="index.jsp" class="<%= request.getServletPath().equals("/index.jsp") ? "active-link" : "" %>">Home</a>
+<a href="men.jsp" class="<%= request.getServletPath().equals("/men.jsp") ? "active-link" : "" %>">For Men</a>
+<a href="women.jsp" class="<%= request.getServletPath().equals("/women.jsp") ? "active-link" : "" %>">For Women</a>
+<a href="aboutus.jsp" class="<%= request.getServletPath().equals("/aboutus.jsp") ? "active-link" : "" %>">About Us</a>
+<a href="Cart.jsp" class="<%= request.getServletPath().equals("/Cart.jsp") ? "active-link" : "" %>">Cart</a>
+
+</nav>
         <div class="signin">
             <button id="signin-btn" onclick="openModal('login')">Sign In</button>
-        </div>
+    .    </div>
     </header>
 
     <!-- Text Section -->
     <div class="text-section" id="text-section">
         <div class="text-container">
-            <p>Your Watch, Your Statement<br>Show the World Who You Are!</p>
-            <pre>at WatchIt we believes that every timepiece<br>tells a unique story—crafted with<br>precision, infused with style, and<br>designed to express your individuality.</pre>
-            <a href="men.jsp" class="view-more" style="text-decoration: none;">
-                  <button class="view-more">View More</button></a>
+            <p><h1>Your <em>Watch</em>, Your Statement</h1></p>
+        
+           <p><h1>Show the World, Who You Are!</h1></p>
+          <pre>At Watchit,We make sure to match your style<br>with timeless elegance.</pre>
+            <a href="men.jsp" class="View-more-main" >
+                  <button class="View-more-main">View More</button></a>
         </div>
     </div>      
     <script src="script.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Check if there are URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
+        var urlParams = new URLSearchParams(window.location.search);
 
         // Display success or failure messages based on the parameters
         if (urlParams.get("loginSuccess") === "true") {
