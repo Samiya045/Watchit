@@ -71,7 +71,7 @@ function validateLoginForm() {// Validate the login form
 
 
 //product pop up
- function openPopup(image, name, price, summary, reviews) {
+ function openPopup(image, name, price, summary, discount) {
     var popup = document.getElementById('product-popup');
 
     // Set image and name
@@ -81,7 +81,7 @@ function validateLoginForm() {// Validate the login form
     // Update text content after the labels using string concatenation
     document.getElementById('popup-price').innerHTML = '<span class="popup-label">Price:</span> ' + price;
     document.getElementById('popup-summary').innerHTML = '<span class="popup-label">Summary:</span> ' + summary;
-    document.getElementById('popup-reviews').innerHTML = '<span class="popup-label">Reviews:</span> ' + reviews;
+    document.getElementById('popup-reviews').innerHTML = '<span class="popup-label">Discount:</span> ' + discount;
 
     // Display the popup
     popup.style.display = 'flex';
@@ -97,6 +97,105 @@ document.getElementById('product-popup').addEventListener('click', function (eve
         closePopup();
     }
 });
+
+//cart
+
+
+
+var SHIPPING_FEE = 250;
+var DISCOUNT = 1999;
+var FREE_SHIPPING_THRESHOLD = 10000;
+
+
+var subtotalEl = document.getElementById("subtotal");
+var shippingFeeEl = document.getElementById("shipping-fee");
+var discountEl = document.getElementById("discount");
+var totalEl = document.getElementById("total");
+var itemCountEl = document.getElementById("item-count");
+
+function renderCart() {
+    cartItemsContainer.innerHTML = "";
+    var subtotal = 0;
+
+    // Check if the cart is empty
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty!</p>';
+        subtotal = 0; // Ensure subtotal is 0 for empty cart
+    } else {
+        cart.forEach(function(item) {
+            subtotal += item.price;
+
+            cartItemsContainer.innerHTML += 
+                '<div class="cart-item">' +
+                    '<img src="' + item.image + '" alt="' + item.name + '">' +
+                    '<div class="item-details">' +
+                        '<h4>' + item.name + '</h4>' +
+                        '<p>PKR ' + item.price + '</p>' +
+                    '</div>' +
+                    '<button class="remove-btn" onclick="removeItem(' + item.id + ')">Remove</button>' +
+                '</div>';
+        });
+    }
+
+
+
+
+    updateSummary(subtotal);
+    itemCountEl.textContent = cart.length;
+}
+
+function updateSummary(subtotal) {
+    var shippingFee = SHIPPING_FEE;
+    var discount = 0;
+
+    if (subtotal >= FREE_SHIPPING_THRESHOLD) {
+        shippingFee = 0;
+        discount = DISCOUNT;
+    }
+
+    var total = subtotal + shippingFee - discount;
+
+subtotalEl.textContent = "PKR " + subtotal;
+shippingFeeEl.textContent = "PKR " + shippingFee;
+discountEl.textContent = "PKR " + discount;
+totalEl.textContent = "PKR " + total;
+
+}
+
+function removeItem(id) {
+    cart = cart.filter(item => item.id !== id);
+    renderCart();
+}
+
+// Initialize cart
+window.onload = renderCart;
+
+// Add product to cart
+function addToCart( name, price, imageUrl) {
+    // Check if item is already in the cart
+    var existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        alert("This item is already in your cart!");
+        return;
+    }
+
+    // Add new item to the cart
+    cart.push({
+        id: id,
+        name: name,
+        price: price,
+        image: imageUrl
+    });
+
+    // Update cart UI
+    renderCart();
+
+    // Notify the user
+    alert(name + " has been added to your cart!");
+}
+
+
+
 
 
 

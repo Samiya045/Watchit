@@ -50,13 +50,17 @@
                             <span class="quantity">1</span>
                             <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
                         </div>
-                        <button class="btn cart">Add to Cart</button>
+                        <button class="btn cart" 
+                           onclick="addToCart('<%= product.getName() %>', 
+                                              '<%= product.getPrice() %>', 
+                                    '<%= product.getImageUrl() %>')">Add to Cart</button>
+
                        <button class="btn view-more" 
                           onclick="openPopup('<%= product.getImageUrl() %>', 
                                              '<%= product.getName() %>', 
                                              '<%= product.getPrice() %>', 
                                              '<%= product.getSummary() %>', 
-                                             '<%= product.getReviews() %>')">View More
+                                             '<%= product.getdiscount() %>')">View More
                        </button>                    
                     </div>
                 </div>
@@ -76,7 +80,7 @@
             <h2 id="popup-name"></h2>
             <p id="popup-price"><span class="popup-label">Price:</span> </p>
             <p id="popup-summary"><span class="popup-label">Summary:</span></p>
-            <p id="popup-reviews"><span class="popup-label">Reviews:</span></p>
+            <p id="popup-reviews"><span class="popup-label">Discount:</span></p>
         </div>
     </div>
 </div>
